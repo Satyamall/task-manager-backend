@@ -7,7 +7,7 @@
     "build": "npm install"
   },
   "dependencies": {
-    "bcryptjs": "^3.0.2",
+    "bcryptjs": "^2.4.3",
     "cloudinary": "^1.37.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
