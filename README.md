@@ -3,7 +3,7 @@ npm install
 npm run dev
 ```
 
-Include API Documentation.
+Included API Documentation.
 
 ```bash
   cd backend/postman_collection
