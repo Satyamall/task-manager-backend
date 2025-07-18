@@ -19,7 +19,7 @@ const createTask = async (req, res) => {
 const getTasks = async (req, res) => {
   try {
     let query = `
-      SELECT tasks.id, tasks.title, tasks.description, tasks.status, tasks.user_id, users.avatar_url
+      SELECT tasks.id, tasks.title, tasks.description, tasks.status, tasks.user_id, users.username, users.role
       FROM tasks
       INNER JOIN users ON tasks.user_id = users.id
     `;
