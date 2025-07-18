@@ -18,18 +18,23 @@ const createTask = async (req, res) => {
 
 const getTasks = async (req, res) => {
   try {
-    let query = "SELECT * FROM tasks";
+    let query = `
+      SELECT tasks.id, tasks.title, tasks.description, tasks.status, tasks.user_id, users.avatar_url
+      FROM tasks
+      INNER JOIN users ON tasks.user_id = users.id
+    `;
     let params = [];
+
     if (req.user.role !== "admin") {
       query += " WHERE tasks.user_id = ?";
       params.push(req.user.id);
     }
+
     const [rows] = await pool.query(query, params);
-    res.json(rows);
+    res.status(200).json(rows);
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error fetching tasks", error: error.message });
+    console.error("Get Tasks Error:", error);
+    res.status(500).json({ error: "Server error" });
   }
 };
 
